@@ -73,7 +73,14 @@ jobs:
           done
           tail -5 client.log
           sleep 4
-          xwininfo -root -tree | grep -i -E "minecraft|java" | head -5 || true
+          mkdir -p cikti
+          {
+            echo "== ortam"; echo "DISPLAY=$DISPLAY"
+            echo "== java süreçleri"; pgrep -af java | cut -c1-300
+            for pid in $(pgrep -f KnotClient; pgrep -f "net.fabricmc.devlaunchinjector"); do echo "pid $pid DISPLAY=$(tr '\0' '\n' < /proc/$pid/environ | grep ^DISPLAY)"; done
+            echo "== pencereler"; xwininfo -root -tree
+            echo "== xdotool"; xdotool search --name "Minecraft"; xdotool search --class "java"
+          } > cikti/debug.txt 2>&1 || true
           WIN=$(xdotool search --name "Minecraft" | tail -1 || true)
           echo "pencere: $WIN"
           if [ -n "$WIN" ]; then
