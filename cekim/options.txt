@@ -15,3 +15,9 @@ graphicsMode:0
 renderClouds:"false"
 particles:0
 entityShadows:true
+rawMouseInput:false
+mouseSensitivity:0.5
+soundCategory_master:1.0
+soundCategory_hostile:1.0
+soundCategory_ambient:1.0
+showSubtitles:false

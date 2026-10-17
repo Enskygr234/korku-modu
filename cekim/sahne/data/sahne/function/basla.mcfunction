@@ -4,6 +4,7 @@ gamerule doMobSpawning false
 gamerule sendCommandFeedback false
 gamerule commandBlockOutput false
 gamerule announceAdvancements false
+gamerule doInsomnia false
 time set 18000
 weather clear
-schedule function sahne:hazirla 200t
+scoreboard objectives add zipla minecraft.custom:minecraft.jump
