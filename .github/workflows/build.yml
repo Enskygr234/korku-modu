@@ -35,6 +35,30 @@ jobs:
           chmod +x gradlew
           ./gradlew build --no-daemon --stacktrace 2>&1 | tee build.log
 
+      # Gerçek bir 1.21.1 sunucusu açıp modu yükle, Albastı çağır, çökme var mı bak
+      - name: Sunucuda dene
+        run: |
+          mkdir -p run/world/datapacks/deneme/data/deneme/function run/world/datapacks/deneme/data/minecraft/tags/function
+          echo "eula=true" > run/eula.txt
+          printf 'level-type=minecraft\\:flat\nspawn-protection=0\n' > run/server.properties
+          echo '{"pack":{"pack_format":48,"description":"deneme"}}' > run/world/datapacks/deneme/pack.mcmeta
+          printf 'time set midnight\nsummon korkumodu:albasti 0 -60 0\nsummon korkumodu:albasti 5 -60 5\nsay ALBASTI_CAGIRILDI\n' > run/world/datapacks/deneme/data/deneme/function/basla.mcfunction
+          echo '{"values":["deneme:basla"]}' > run/world/datapacks/deneme/data/minecraft/tags/function/load.json
+          ./gradlew runServer --no-daemon > server.log 2>&1 &
+          for i in $(seq 1 120); do
+            grep -q "ALBASTI_CAGIRILDI" server.log && break
+            grep -q -E "Crash report|Exception in server tick loop|Failed to start the minecraft server" server.log && break
+            sleep 5
+          done
+          sleep 30   # Albastı'lar biraz yaşasın (aiStep, aura, ses kodları çalışsın)
+          pkill -f "net.fabricmc" || true
+          sleep 5
+          cat server.log >> build.log
+          grep -E "Korku Modu yüklendi|ALBASTI_CAGIRILDI|ERROR|Exception" server.log | head -40
+          grep -q "Korku Modu yüklendi" server.log || { echo "::error::Mod yüklenmedi"; exit 1; }
+          grep -q "ALBASTI_CAGIRILDI" server.log || { echo "::error::Albastı çağırma komutu çalışmadı"; exit 1; }
+          if grep -q -E "Crash report|Exception in server tick loop|Ticking entity" server.log; then echo "::error::Sunucu çöktü"; exit 1; fi
+
       - name: Jar'ı hazırla
         run: |
           JAR=$(ls build/libs/*.jar | grep -v -- '-sources' | head -1)
