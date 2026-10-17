@@ -1,0 +1,38 @@
+== ortam
+DISPLAY=:99
+== java süreçleri
+4471 /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/25.0.4-1/x64/bin/java -Xmx64m -Xms64m -Dorg.gradle.appname=gradlew -jar /home/runner/work/korku-modu/korku-modu/gradle/wrapper/gradle-wrapper.jar runClient --no-daemon
+4511 /usr/lib/jvm/temurin-25-jdk-amd64/bin/java --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.lang.invoke=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.prefs/java.util.prefs=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED
+4658 /usr/lib/jvm/temurin-25-jdk-amd64/bin/java -Dfabric.dli.config=/home/runner/work/korku-modu/korku-modu/.gradle/loom-cache/launch.cfg -Dfabric.dli.env=client -Dfabric.dli.main=net.fabricmc.loader.impl.launch.knot.KnotClient @/home/runner/work/korku-modu/korku-modu/build/loom-cache/argFiles/runCl
+pid 4658 DISPLAY=DISPLAY=:99
+pid 4658 DISPLAY=DISPLAY=:99
+== pencereler
+
+xwininfo: Window id: 0x21f (the root window) (has no name)
+
+  Root window id: 0x21f (the root window) (has no name)
+  Parent window id: 0x0 (none)
+     2 children:
+     0x200007 "Minecraft* 1.21.1 - Tek Oyunculu": ("Minecraft* 1.21.1" "Minecraft* 1.21.1")  1280x720+0+0  +0+0
+     0x200001 (has no name): ()  1x1+0+0  +0+0
+
+== xdotool
+2097159
+== ses
+Server String: /run/user/1001/pulse/native
+Library Protocol Version: 35
+Server Protocol Version: 35
+Is Local: yes
+Client Index: 2
+Tile Size: 65472
+User Name: runner
+Host Name: runnervm8k3b6
+Server Name: pulseaudio
+Server Version: 16.1
+Default Sample Specification: s16le 2ch 44100Hz
+Default Channel Map: front-left,front-right
+Default Sink: kayit
+Default Source: kayit.monitor
+Cookie: bff7:ab55
+1	kayit	module-null-sink.c	s16le 2ch 44100Hz	RUNNING
+2	1	7	protocol-native.c	float32le 2ch 44100Hz
