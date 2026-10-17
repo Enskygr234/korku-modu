@@ -21,3 +21,4 @@ soundCategory_master:1.0
 soundCategory_hostile:1.0
 soundCategory_ambient:1.0
 showSubtitles:false
+lang:tr_tr
