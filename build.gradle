@@ -73,4 +73,8 @@ if (System.getenv("SAHNE") != null) {
 			}
 		}
 	}
+	// Loom CI'da oyunu kendi gizli ekranında açıyor; kaydedebilmek için bizim ekranımızı kullansın
+	tasks.named("runClient") {
+		useXvfb = false
+	}
 }

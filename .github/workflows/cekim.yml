@@ -5,7 +5,7 @@ name: Oyun içi çekim
 on:
   push:
     branches: [main]
-    paths: ["cekim/**", ".github/workflows/cekim.yml"]
+    paths: ["cekim/**", ".github/workflows/cekim.yml", "build.gradle"]
   workflow_dispatch:
 
 permissions:
