@@ -21,4 +21,5 @@ Türk efsanelerinden korku modu. **Minecraft 1.21.1, Fabric.**
 ## Geliştirme
 
 - Dokular `tools/textures.py`, sesler `tools/sounds.py` ile üretilir.
+- Kurulum videosu `tools/video_kurulum.py`, fragman `tools/video_fragman.py` ile üretilir. Fragmandaki oyun görüntüleri "Oyun içi çekim" iş akışının kaydından (`cekimler` dalı) gelir.
 - `main` dalına her gönderimde GitHub Actions modu derleyip yukarıdaki linke koyar.
