@@ -32,7 +32,7 @@ jobs:
       - name: Araçlar
         run: |
           sudo apt-get update -qq
-          sudo apt-get install -y -qq xvfb xdotool ffmpeg libgl1-mesa-dri mesa-utils fluxbox x11-utils > /dev/null
+          sudo apt-get install -y -qq xvfb xdotool ffmpeg libgl1-mesa-dri mesa-utils x11-utils > /dev/null
 
       - name: Dünyayı oluştur (düz dünya)
         run: |
@@ -61,8 +61,6 @@ jobs:
         run: |
           Xvfb :99 -screen 0 1280x720x24 -nolisten tcp +extension GLX &
           sleep 3
-          fluxbox > /dev/null 2>&1 &
-          sleep 2
           glxinfo -B | head -12 || true
           ./gradlew runClient --no-daemon > client.log 2>&1 &
           # Dünyaya girilmesini bekle (ilk seferde oyun dosyaları iniyor)
