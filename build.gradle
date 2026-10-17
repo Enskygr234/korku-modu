@@ -63,3 +63,14 @@ jar {
 	}
 }
 
+
+// Çekim modu: SAHNE=1 ile istemci doğrudan "korku" dünyasına girer (GitHub'daki video kaydı için)
+if (System.getenv("SAHNE") != null) {
+	loom {
+		runs {
+			client {
+				programArgs "--quickPlaySingleplayer", "korku", "--width", "1280", "--height", "720"
+			}
+		}
+	}
+}
