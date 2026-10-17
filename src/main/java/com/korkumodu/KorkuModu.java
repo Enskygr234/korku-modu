@@ -34,7 +34,7 @@ public class KorkuModu implements ModInitializer {
 			id("albasti"),
 			EntityType.Builder.of(Albasti::new, MobCategory.MONSTER)
 					.sized(0.6F, 2.2F)
-					.eyeHeight(2.0F)
+					.eyeHeight(1.85F)
 					.clientTrackingRange(10)
 					.build("albasti"));
 

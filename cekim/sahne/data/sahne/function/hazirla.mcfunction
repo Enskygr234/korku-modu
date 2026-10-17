@@ -14,7 +14,8 @@ setblock -3 -60 9 minecraft:oak_fence
 setblock -3 -59 9 minecraft:lantern
 setblock 3 -60 13 minecraft:oak_fence
 setblock 3 -59 13 minecraft:lantern
-setblock 2 -60 3 minecraft:campfire
+setblock 2 -60 3 minecraft:oak_fence
+setblock 2 -59 3 minecraft:lantern
 setblock -2 -60 -4 minecraft:oak_fence
 setblock -2 -59 -4 minecraft:soul_lantern
 setblock 1 -60 18 minecraft:soul_lantern
