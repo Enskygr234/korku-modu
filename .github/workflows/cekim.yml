@@ -62,6 +62,7 @@ jobs:
           LIBGL_ALWAYS_SOFTWARE: "1"
           MESA_GL_VERSION_OVERRIDE: "4.5"
           MESA_GLSL_VERSION_OVERRIDE: "450"
+          ALSOFT_DRIVERS: "pulse"
         run: |
           Xvfb :99 -screen 0 1280x720x24 -nolisten tcp +extension GLX &
           # Oyunun sesini kaydetmek için sanal ses kartı
@@ -70,6 +71,7 @@ jobs:
           pactl load-module module-null-sink sink_name=kayit || true
           pactl set-default-sink kayit || true
           sleep 2
+          pactl info > ses-bilgi.txt 2>&1 || true
           glxinfo -B | head -12 || true
           ./gradlew runClient --no-daemon > client.log 2>&1 &
           # Dünyaya girilmesini bekle (ilk seferde oyun dosyaları iniyor)
@@ -87,6 +89,7 @@ jobs:
             for pid in $(pgrep -f KnotClient; pgrep -f "net.fabricmc.devlaunchinjector"); do echo "pid $pid DISPLAY=$(tr '\0' '\n' < /proc/$pid/environ | grep ^DISPLAY)"; done
             echo "== pencereler"; xwininfo -root -tree
             echo "== xdotool"; xdotool search --name "Minecraft"; xdotool search --class "java"
+            echo "== ses"; cat ses-bilgi.txt; pactl list short sinks; pactl list short sink-inputs
           } > cikti/debug.txt 2>&1 || true
           WIN=$(xdotool search --name "Minecraft" | tail -1 || true)
           echo "pencere: $WIN"

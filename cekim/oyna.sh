@@ -12,7 +12,7 @@ birak() { xdotool keyup "$1"; }
 xdotool windowfocus --sync "$WIN" 2>/dev/null || true
 xdotool mousemove --window "$WIN" 640 360 click 3   # sağ tık: fareyi oyuna kilitle (meşale yere konmaz, havaya)
 sleep 3                     # orman kurulsun, chunklar yüklensin
-xdotool key space           # zıpla: veri paketi sahneyi bu anda başlatır
+xdotool keydown space; sleep 0.25; xdotool keyup space   # zıpla: veri paketi sahneyi bu anda başlatır
 T0=$(date +%s.%N)
 echo "sahne basladi $T0"
 at 0.8;  bak -180 1.0 40          # etrafa bakın
@@ -31,7 +31,7 @@ at 19.5; bak -1200 0.8; bas Control_L; bas w   # kaç
 at 21.5; bak 80 0.4
 at 22.6; bak -80 0.4
 at 24.0; bak 1200 0.5             # dönüp bak: burnunun dibinde
-at 25.4; xdotool key 3            # nazar boncuğu slotu
+at 25.4; xdotool keydown 3; sleep 0.15; xdotool keyup 3   # nazar boncuğu slotu
 at 25.6; birak w; birak Control_L
 at 27.5; bak -300 2.0 60          # sakinleş, etrafa bak
 at 30.0; bak 500 2.5 -60
