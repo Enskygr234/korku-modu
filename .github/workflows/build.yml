@@ -1,0 +1,65 @@
+name: Modu derle
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build
+  cancel-in-progress: true
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+
+      - uses: gradle/actions/setup-gradle@v4
+
+      - name: Derle
+        run: |
+          chmod +x gradlew
+          ./gradlew build --no-daemon --stacktrace 2>&1 | tee build.log
+
+      - name: Jar'ı hazırla
+        run: |
+          JAR=$(ls build/libs/*.jar | grep -v -- '-sources' | head -1)
+          cp "$JAR" korku-modu-1.21.1.jar
+          ls -la build/libs
+
+      # Sabit link: .../releases/download/son-surum/korku-modu-1.21.1.jar
+      - name: İndirme linkini güncelle
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release delete son-surum --yes --cleanup-tag || true
+          gh release create son-surum korku-modu-1.21.1.jar \
+            --title "Korku Modu - son sürüm (Minecraft 1.21.1, Fabric)" \
+            --notes "Derleme #${{ github.run_number }}: $(git log -1 --pretty=%s). Gerekenler: Fabric Loader ve Fabric API (1.21.1)." \
+            --target "${{ github.sha }}"
+
+      - name: Hata kaydını yayımla
+        if: failure()
+        run: |
+          mkdir -p logs && cd logs
+          tail -c 200000 ../build.log > ci.log 2>/dev/null || echo "kayıt yok" > ci.log
+          git init -q -b ci-logs
+          git config user.name "korku-modu-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add ci.log
+          git commit -q -m "Başarısız derleme #${{ github.run_number }}"
+          git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" HEAD:ci-logs

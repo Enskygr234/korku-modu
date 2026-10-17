@@ -1,0 +1,11 @@
+{
+  "entity.korkumodu.albasti": "Albasti",
+  "item.korkumodu.nazar_boncugu": "Evil Eye Bead",
+  "item.korkumodu.albasti_spawn_egg": "Albasti Spawn Egg",
+  "itemGroup.korkumodu": "Korku Modu",
+  "subtitles.korkumodu.albasti.ambient": "Albasti whispers",
+  "subtitles.korkumodu.albasti.scream": "Albasti screams",
+  "subtitles.korkumodu.albasti.hurt": "Albasti groans",
+  "subtitles.korkumodu.albasti.death": "Albasti dissolves",
+  "subtitles.korkumodu.fisilti": "Someone whispers in your ear"
+}

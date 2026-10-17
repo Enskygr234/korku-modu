@@ -1,0 +1,11 @@
+{
+  "entity.korkumodu.albasti": "Albastı",
+  "item.korkumodu.nazar_boncugu": "Nazar Boncuğu",
+  "item.korkumodu.albasti_spawn_egg": "Albastı Çağırma Yumurtası",
+  "itemGroup.korkumodu": "Korku Modu",
+  "subtitles.korkumodu.albasti.ambient": "Albastı fısıldıyor",
+  "subtitles.korkumodu.albasti.scream": "Albastı çığlık atıyor",
+  "subtitles.korkumodu.albasti.hurt": "Albastı inliyor",
+  "subtitles.korkumodu.albasti.death": "Albastı dağılıyor",
+  "subtitles.korkumodu.fisilti": "Kulağına biri fısıldıyor"
+}

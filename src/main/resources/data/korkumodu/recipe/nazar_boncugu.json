@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [" B ", "BGB", " W "],
+  "key": {
+    "B": {"item": "minecraft:blue_dye"},
+    "G": {"item": "minecraft:glass"},
+    "W": {"item": "minecraft:string"}
+  },
+  "result": {"id": "korkumodu:nazar_boncugu", "count": 1}
+}

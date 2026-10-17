@@ -1,0 +1,24 @@
+{
+	"schemaVersion": 1,
+	"id": "korkumodu",
+	"version": "${version}",
+	"name": "Korku Modu",
+	"description": "Türk efsanelerinden korku: Albastı karanlıkta seni bekliyor. Ona bakarsan donar, arkanı dönersen yaklaşır.",
+	"authors": ["Enskygr234"],
+	"contact": {
+		"sources": "https://github.com/Enskygr234/korku-modu"
+	},
+	"license": "MIT",
+	"icon": "assets/korkumodu/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": ["com.korkumodu.KorkuModu"],
+		"client": ["com.korkumodu.client.KorkuModuClient"]
+	},
+	"depends": {
+		"fabricloader": ">=0.16.0",
+		"minecraft": "~1.21.1",
+		"java": ">=21",
+		"fabric-api": "*"
+	}
+}

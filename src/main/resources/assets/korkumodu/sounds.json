@@ -1,0 +1,7 @@
+{
+  "albasti.ambient": {"subtitle": "subtitles.korkumodu.albasti.ambient", "sounds": ["korkumodu:fisilti1", "korkumodu:fisilti2"]},
+  "albasti.scream":  {"subtitle": "subtitles.korkumodu.albasti.scream",  "sounds": ["korkumodu:ciglik"]},
+  "albasti.hurt":    {"subtitle": "subtitles.korkumodu.albasti.hurt",    "sounds": ["korkumodu:inilti"]},
+  "albasti.death":   {"subtitle": "subtitles.korkumodu.albasti.death",   "sounds": ["korkumodu:dagilma"]},
+  "fisilti":         {"subtitle": "subtitles.korkumodu.fisilti",         "sounds": ["korkumodu:fisilti1", "korkumodu:fisilti2"]}
+}
